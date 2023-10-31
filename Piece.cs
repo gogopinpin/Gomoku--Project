@@ -1,0 +1,26 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace Gomoku
+{
+    abstract class Piece : PictureBox
+    {
+        private static readonly int IMAGE_WIDTH = 50;
+
+        public Piece(int x, int y)
+        {
+            // 設置了棋子的背景色為透明，以便將棋子顯示在棋盤上
+            this.BackColor = Color.Transparent;
+            // 使棋子的中心與指定座標的位置重合
+            this.Location = new Point(x - IMAGE_WIDTH / 2, y - IMAGE_WIDTH / 2);
+            this.Size = new Size(IMAGE_WIDTH, IMAGE_WIDTH);
+        }
+
+        public abstract PieceType GetPieceType();
+    }
+}
